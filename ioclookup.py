@@ -37,7 +37,7 @@ def elasticsearch_ioc():
                     date_actual = dt.strptime(ioc["_source"]["time"]["observation"][:10], "%Y-%m-%d")
                     if ((date_writed - date_actual).total_seconds()) > 0:
                         continue
-                ioc_data_dict[accuracy] = ioc
+                ioc_data_dict[accuracy] = ioc["_source"]
     if not len(ioc_data_dict):
         data = {}
     else:
