@@ -18,7 +18,7 @@ def elasticsearch_ioc():
                 }
               }
             }
-    hits = post("http://{}:{}/iocs/_search".format(environ["ELASTICSEARCH_HOST"], environ["ELASTICSEARCH_PORT"]), data=data_post).json()
+    hits = post("http://{}:{}/iocs/_search".format(environ["ELASTICSEARCH_HOST"], environ["ELASTICSEARCH_PORT"]), data=str(data_post)).json()
     if environ["DEBUG"]:
         with open("hits.txt", "w") as file:
             file.write(str(hits))
