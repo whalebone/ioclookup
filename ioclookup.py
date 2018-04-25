@@ -22,7 +22,7 @@ def elasticsearch_ioc():
     if environ["DEBUG"]:
         with open("hits.txt", "w") as file:
             file.write(str(hits))
-    ioc_data = {[ioc["_source"] for ioc in hits["hits"]["hits"]]}
+    ioc_data = [ioc["_source"] for ioc in hits["hits"]["hits"]]
     response = app.response_class(response=dumps(ioc_data), status=200, mimetype='application/json')
     return response
 
