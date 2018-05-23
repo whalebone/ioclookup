@@ -1,6 +1,11 @@
-FROM ubuntu:latest
-RUN apt-get update -y && apt-get install -y python3-pip && \
-    pip3 install requests Flask
+FROM python:3.5-alpine
+
+RUN apk update 
+
+
+RUN pip3 install requests 
+RUN pip3 install Flask
+
 COPY ioclookup.py .
 ENTRYPOINT ["python3"]
 CMD ["ioclookup.py"]
